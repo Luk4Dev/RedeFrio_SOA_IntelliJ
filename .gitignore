@@ -1,0 +1,11 @@
+/target/
+/.idea/
+*.iml
+/.settings/
+/.classpath
+/.project
+/data/*
+!/data/.gitkeep
+*.log
+.DS_Store
+Thumbs.db

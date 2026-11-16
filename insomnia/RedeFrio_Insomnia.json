@@ -1,0 +1,417 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-11-16T21:00:00.000Z",
+  "__export_source": "Rede Frio SOA",
+  "resources": [
+    {
+      "_id": "wrk_redefrio_soa_2026",
+      "_type": "workspace",
+      "name": "Rede Frio — SOA GS 2026.2",
+      "description": "Casos de teste manuais do backend Rede Frio. Dados fictícios e locais.",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_redefrio_soa_2026",
+      "_type": "environment",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url"
+        ]
+      },
+      "color": null
+    },
+    {
+      "_id": "req_redefrio_01",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "01 - Saúde",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/saude",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_02",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "02 - Instituições",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/instituicoes",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_03",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "03 - Refrigeradores",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/refrigeradores",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_04",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "04 - Lotes",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/lotes",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_05",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "05 - Registrar doação (10 kg)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/doacoes",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"loteId\": 1,\n  \"instituicaoDestinoId\": 2,\n  \"quantidadeKg\": 10.0\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_06",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "06 - Saldo do lote 1",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/lotes/1",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_07",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "07 - Exceder saldo do lote",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/doacoes",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"loteId\": 1,\n  \"instituicaoDestinoId\": 2,\n  \"quantidadeKg\": 999.0\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_08",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "08 - Leitura fora da faixa (9,5°C)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/leituras",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refrigeradorId\": 1,\n  \"temperaturaC\": 9.5\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_09",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "09 - Alertas",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/alertas",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_10",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "10 - Leitura normal (3°C)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/leituras",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refrigeradorId\": 1,\n  \"temperaturaC\": 3.0\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_11",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "11 - Entrada inválida (400)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/leituras",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refrigeradorId\": 1,\n  \"temperaturaC\": null\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_12",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "12 - Lote inexistente (404)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/lotes/999999",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_13",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "13 - Resumo",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/resumo",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_14",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "14 - Cadastrar instituição",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/instituicoes",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Associação Exemplo 2\",\n  \"tipo\": \"RECEPTORA\",\n  \"cidade\": \"São Paulo\",\n  \"bairro\": \"Centro\",\n  \"contato\": null\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_15",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "15 - Cadastrar refrigerador",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/refrigeradores",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"codigo\": \"RF-DEMO-002\",\n  \"instituicaoId\": 2,\n  \"temperaturaMinC\": 1.0,\n  \"temperaturaMaxC\": 5.0\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_16",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "16 - Cadastrar lote",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/lotes",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"descricao\": \"Alimentos embalados - demonstração\",\n  \"categoria\": \"Refrigerados\",\n  \"quantidadeKg\": 20.0,\n  \"validade\": \"2027-12-31\",\n  \"instituicaoOrigemId\": 1\n}"
+      }
+    },
+    {
+      "_id": "req_redefrio_17",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "17 - Confirmar doação ID 1",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/api/doacoes/1/confirmar",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_18",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "18 - Cancelar doação ID 1 (alternativo)",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/api/doacoes/1/cancelar",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_19",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "19 - Resolver alerta ID 1",
+      "method": "PATCH",
+      "url": "{{ _.base_url }}/api/alertas/1/resolver",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_20",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "20 - Doações",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/doacoes",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    },
+    {
+      "_id": "req_redefrio_21",
+      "_type": "request",
+      "parentId": "wrk_redefrio_soa_2026",
+      "name": "21 - Leituras",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/leituras",
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true
+    }
+  ]
+}
